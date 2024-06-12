@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fahad Ahmad Khan - Resume</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        .pronouns {
+            font-size: 1rem;
+            margin-top: -0.5rem;
+        }
+        .typing-text {
+            font-size: 1.2rem;
+            color: #ffffff;
+            background: #0073e6;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-top: -0.5rem;
+            display: flex;
+            gap: 0.1rem;
+            justify-content: center;
+        }
+        .typing-text span {
+            opacity: 0;
+            animation: fadeInLetter 0.5s forwards;
+            animation-delay: calc(var(--i) * 0.1s);
+        }
+        @keyframes fadeInLetter {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        nav a {
+            color: #fff; /* Set menu text color to white */
+            text-decoration: none;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #0073e6; /* Set text color to blue on hover */
+            background-color: #fff; /* Set background color to white on hover */
+        }
+        section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        section:hover {
+            transform: scale(1.02);
+        }
+        h2 {
+            color: #0073e6;
+            border-bottom: 2px solid #0073e6;
+            padding-bottom: 0.5rem;
+        }
+        .contact a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #0073e6;
+            color: white;
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 1rem 0;
+        }
+        .contact-info p, .top-skills ul, .languages ul, .certifications ul, .honors-awards ul, .Research ul, .experience ul, .education ul {
+            margin: 0;
+        }
+        .experience {
+            margin-top: 1rem;
+        }
+        .experience-details {
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .experience-details:hover {
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .experience-details h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        .experience-details p {
+            margin: 0.5rem 0 0;
+            color: #555;
+        }
+        .experience-details .date {
+            font-size: 0.9rem;
+            color: #999;
+        }
+        .collapsible {
+            cursor: pointer;
+            padding: 0.5rem;
+            text-align: left;
+            outline: none;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            border: none;
+            background: none;
+            width: 100%;
+        }
+        .active, .collapsible:hover {
+            background-color: #0073e6;
+            color: white;
+        }
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .collapsible-content.open {
+            max-height: 500px;
+        }
+        .collapsible-content p {
+            margin: 0;
+        }
+        #about p {
+            line-height: 1.5; /* Adjust line height as needed */
+        }
+        .contact-info p {
+            margin: 0;
+            line-height: 1.5; /* Adjust line height as needed */
+        }
+
+        .contact-info p b {
+            display: inline-block;
+            width: 80px; /* Adjust the width to align the labels */
+        }
+        #languages ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        #languages ul li {
+            margin: 0.5rem 0;
+            display: flex;
+        }
+
+        #languages ul li span.label {
+            width: 90px; /* Adjust the width to align the labels */
+            font-weight: bold;
+        }
+
+        #languages ul li span.value {
+        flex-grow: 1;
+        }
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const text = "Digital Technology Teacher | Curriculum & Exam Developer | Researcher | Tech Writer";
+            const container = document.querySelector('.typing-text');
+            text.split('').forEach((char, index) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.style.setProperty('--i', index);
+                container.appendChild(span);
+            });
+
+            const collapsibles = document.querySelectorAll('.collapsible');
+            collapsibles.forEach(button => {
+                button.addEventListener('click', () => {
+                    button.classList.toggle('active');
+                    const content = button.nextElementSibling;
+                    content.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="profile">
+            <img src="pp.jpg" alt="Profile Picture">
+            <p class="name">Fahad Ahmad Khan</p>
+            <p class="pronouns">(He/Him)</p>
+            <div class="typing-text"></div>
+        </div>
+        <nav>
+            <a href="#about">About Me</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#Research">Research</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a motivated academician and certified assessor with over 10 years of experience in various roles at prestigious national and international educational organizations. Currently, I am working as an ICT teacher for secondary and higher secondary sections at an American Curriculum School in Abu Dhabi.</p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="experience">
+            <button class="collapsible">Digital Technology Teacher - Northcote College (January 2024 - Present)</button>
+            <div class="collapsible-content">
+                <p class="date">  <b>Location: Auckland, New Zealand</b></p>
+                <ul>
+                    <li>Introducing Year 9 students to coding and web design basics.</li>
+                    <li>Guiding Year 10 students in digital disciplines such as video editing and Python programming.</li>
+                    <li>Equipping Year 12 students with Java programming skills and Arduino projects.</li>
+                    <li>Mastering Object-Oriented Programming and advanced projects with Year 13 students.</li>
+                </ul>
+            </div>
+            <button class="collapsible">Al Dhafra Private School - ICT Teacher (September 2021 - January 2024)</button>
+            <div class="collapsible-content">
+                <p class="date"><b>Location: Abu Dhabi, UAE</b></p>
+                <ul>
+                    <li>Delivering ICT lessons with modern teaching techniques.</li>
+                    <li>Providing feedback on students' activities and assignments.</li>
+                    <li>Preparing quizzes and exams for student assessment.</li>
+                    <li>Revising the ICT scope and sequence to align with the latest trends.</li>
+                    <li>Encouraging problem-solving using programming languages.</li>
+                    <li>Updating grade leaders on student progress and communicating with parents.</li>
+                </ul>
+            </div>
+            <button class="collapsible">Aga Khan University Examination Board - Specialist Curriculum & Exam Development (June 2016 - September 2021)</button>
+            <div class="collapsible-content">
+                <p class="date"><b>Location: Karachi, Pakistan</b></p>
+                <ul>
+                    <li>Assessment and exam development for Computer Science.</li>
+                    <li>Conducting teacher training and workshops across Pakistan.</li>
+                    <li>Revising the Computer Science syllabus to international standards.</li>
+                </ul>
+            </div>
+            <button class="collapsible">Beaconhouse School Systems - O Level Teacher/Subject Coordinator (August 2015 - May 2016)</button>
+            <div class="collapsible-content">
+                <p class="date"><b>Location: Karachi, Pakistan</b></p>
+                <ul>
+                    <li>Taught Computer Science for O Level.</li>
+                    <li>Involved students in learning through various online tools and assignments.</li>
+                    <li>Prepared regional papers for Grade 10 Computer Science.</li>
+                </ul>
+            </div>
+            <button class="collapsible">hongkiat.com - Technical Writer (April 2014 - May 2016)</button>
+            <div class="collapsible-content">
+                <p class="date"><b>Remote</b></p>
+                <ul>
+                    <li>Wrote articles on tech tools, software, and web services.</li>
+                    <li>Author Page: <a href="https://www.hongkiat.com/blog/author/fahad_khan/" target="_blank">hongkiat.com/blog/author/fahad_khan</a></li>
+                </ul>
+            </div>
+            <button class="collapsible">The City School PAF Chapter - Computer Science Teacher (November 2013 - August 2015)</button>
+            <div class="collapsible-content">
+                <p class="date"><b>Location: Karachi, Pakistan</b></p>
+                <ul>
+                    <li>Taught Computer Science for O Level.</li>
+                    <li>Supervised students in developing O Level projects using VB.NET & MS Access.</li>
+                </ul>
+            </div>
+            <button class="collapsible">Institute of Business & Technology - Lecturer in Computer Science Department (March 2013 - September 2013)</button>
+            <div class="collapsible-content">
+                <p class="date"><b>Location: Karachi, Pakistan</b></p>
+                <ul>
+                    <li>Taught undergraduate courses.</li>
+                    <li>Designed lab manuals and coordinated lab upgrades.</li>
+                </ul>
+            </div>
+            <button class="collapsible">Multinet - Technical Support Engineer (December 2012 - March 2013)</button>
+            <div class="collapsible-content">
+                <p class="date"><b>Location: Karachi, Pakistan</b></p>
+                <ul>
+                    <li>Provided L1 and L2 support to corporate clients.</li>
+                    <li>Troubleshot and provided solutions to network queries.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Top Skills</h2>
+        <ul>
+            <li>Curriculum Development</li>
+            <li>Exam Development</li>
+            <li>Lesson Planning</li>
+            <li>Instructional Design</li>
+            <li>Differentiated Learning</li>
+            <li>Classroom Management</li>
+            <li>Emotional Intelligence</li>
+        </ul>
+    </section>
+
+    <section id="languages">
+        <h2>Languages - IELTS Academic</h2>
+        <ul>
+            <li><span class="label">Listening:</span> <span class="value">7.5 / 9.0</span></li>
+            <li><span class="label">Reading:</span> <span class="value">7.5 / 9.0</span></li>
+            <li><span class="label">Writing:</span> <span class="value">7.0 / 9.0</span></li>
+            <li><span class="label">Speaking:</span> <span class="value">7.0 / 9.0</span></li>
+            <li><span class="label">Overall:</span> <span class="value">7.5 / 9.0</span></li>
+        </ul>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li>Teaching Council of Aotearoa New Zealand - Practising Certificate, Secondary School Teacher</li>
+            <li>Educational Assessor Online Training</li>
+            <li>Cisco Explorations: Network Fundamentals</li>
+            <li>Highest CGPA - C & C++ Programming</li>
+            <li>Appreciation Certificate</li>
+        </ul>
+    </section>
+
+    <section id="honors-awards">
+        <h2>Honors & Awards</h2>
+        <ul>
+            <li>Gold Medalist in BE Telecommunication</li>
+        </ul>
+    </section>
+
+    <section id="Research">
+        <h2>Research Work</h2>
+        <ul>
+            <li>Poster Presentation on Exploring the Impact of Cognitive Levels on the Difficulty Level of Items in High Stake Examinations</li>
+            <li>Poster Presentation on Exploring the Role of Mathematics Skills for Computer Programming</li>
+        </ul>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <ul>
+            
+            <li><strong>Postgraduate Professional Diploma in Teaching IT</strong> - AL Ain University, United Arab Emirates (2021 - 2022)</li>
+            <li><strong>Master of Science (MS), Computer Science</strong> - Hamdard University, Pakistan (2017 - 2019)</li>
+            <li><strong>Bachelor of Engineering (BE), Telecommunications Engineering</strong> - Sukkur Institute of Business Administration, Pakistan (2008 - 2011)</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <p><b>Phone:</b> +642902310047</p>
+            <p><b>Email:</b> fahadahmad1932@gmail.com</p>
+            <p><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/fahadkhan1988" target="_blank">linkedin.com/in/fahadkhan1988</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Fahad Ahmad Khan</p>
+    </footer>
+</body>
+</html>
